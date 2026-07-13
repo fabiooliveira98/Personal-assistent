@@ -20,6 +20,11 @@ Importante:
 - foi adicionado teste de normalizacao do webhook em `tests/test_whatsapp_webhook_schema.py`;
 - foi criado `.gitignore` para evitar versionamento de `.env`, caches e artefatos locais;
 - foi corrigida a linha local de `DATABASE_URL` no `.env` que estava com prefixo duplicado.
+- integracao inicial com OpenAI implementada no interpretador:
+  - adicionada dependencia `openai`;
+  - mensagens livres passam a tentar classificacao via OpenAI quando `OPENAI_API_KEY` estiver configurada;
+  - comandos de confirmacao e consultas operacionais continuam deterministicos;
+  - existe fallback automatico para heuristica local se a OpenAI falhar.
 
 ## Observacoes importantes para o proximo agente
 
@@ -37,6 +42,15 @@ Importante:
   - `WHATSAPP_PHONE_NUMBER_ID`;
   - `WHATSAPP_VERIFY_TOKEN`;
   - `PERSONAL_WHATSAPP_CONTACT_ID`.
+- durante a criacao do app na Meta, surgiu um bloqueio na conta do usuario:
+  - mensagem exibida: acesso a anuncios restrito;
+  - efeito pratico: a conta atual nao consegue criar portfol io empresarial pela interface da Meta;
+  - isso bloqueia a continuidade normal do setup do WhatsApp nessa conta ate revisao/liberacao ou uso de um administrador legitimo sem restricao.
+- diagnostico refinado depois:
+  - o portfolio empresarial `fabio_olivr` aparece explicitamente como `Conta com restricao`;
+  - a tela informa restricoes de publicidade e desativacao de ativos do negocio;
+  - isso indica que o portfolio atual nao e confiavel para seguir com a configuracao do app do WhatsApp;
+  - proximo passo recomendado: tentar revisao oficial da Meta; se nao houver liberacao, usar outro portfolio empresarial legitimo e limpo.
 
 ## O que falta configurar
 

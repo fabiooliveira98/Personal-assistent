@@ -105,6 +105,14 @@ Observacoes importantes:
 - O projeto cria as tabelas automaticamente ao iniciar pela chamada `Base.metadata.create_all(...)` em [app/main.py](C:/Users/Fabio/Documents/Personal%20assistent/app/main.py:12).
 - Se voce quiser usar Auth, Storage ou Realtime do Supabase depois, ai sim vale adicionar o client do Supabase em uma etapa separada.
 
+### Integracao com OpenAI
+
+O projeto agora aceita `OPENAI_API_KEY` e `OPENAI_MODEL` para interpretar mensagens com OpenAI.
+
+- quando `OPENAI_API_KEY` estiver configurada, o backend tenta usar OpenAI para classificar mensagens livres;
+- comandos de confirmacao e consultas operacionais continuam com tratamento deterministico;
+- se a chamada da OpenAI falhar ou retornar algo invalido, o backend volta automaticamente para a heuristica local.
+
 ## Proximos passos recomendados
 
 1. Conectar o projeto a um Supabase real.
