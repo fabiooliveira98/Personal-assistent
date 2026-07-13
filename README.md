@@ -81,7 +81,7 @@ Este projeto nao precisa do SDK do Supabase para funcionar com o banco. Como ele
 
 1. No painel do Supabase, abra o projeto certo.
 2. Va em `Connect` ou `Project Settings > Database`.
-3. Copie a string de conexao de `Transaction pooler`.
+3. Copie a string de conexao de `Direct connection` ou `Session pooler`.
 4. Troque o comeco `postgres://` por `postgresql+psycopg://` se necessario.
 5. Garanta que a URL termine com `?sslmode=require`.
 6. Cole essa URL no `.env` em `DATABASE_URL`.
@@ -89,7 +89,7 @@ Este projeto nao precisa do SDK do Supabase para funcionar com o banco. Como ele
 Exemplo:
 
 ```env
-DATABASE_URL=postgresql+psycopg://postgres.[PROJECT-REF]:[PASSWORD]@aws-0-[REGION].pooler.supabase.com:6543/postgres?sslmode=require
+DATABASE_URL=postgresql+psycopg://postgres.[PROJECT-REF]:[PASSWORD]@[HOST]:[PORT]/postgres?sslmode=require
 ```
 
 Depois disso:
@@ -102,7 +102,7 @@ Depois disso:
 Observacoes importantes:
 
 - Use a senha do banco do Supabase, nao a senha da sua conta.
-- O projeto cria as tabelas automaticamente ao iniciar pela chamada `Base.metadata.create_all(...)` em [app/main.py](C:/Users/Fabio/Documents/Personal%20assistent/app/main.py:12).
+- O projeto nao cria mais tabelas automaticamente no startup da API; em producao, a estrutura do banco deve existir antes do deploy.
 - Se voce quiser usar Auth, Storage ou Realtime do Supabase depois, ai sim vale adicionar o client do Supabase em uma etapa separada.
 
 ### Integracao com OpenAI
